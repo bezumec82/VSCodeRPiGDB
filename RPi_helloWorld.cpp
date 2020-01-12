@@ -20,7 +20,7 @@ int main (void)
         f4vec = vld1q_f32(values);
 
     }
-    ::std::cout 	   << vgetq_lane_f32(f4vec, 0)
+    ::std::cout        << vgetq_lane_f32(f4vec, 0)
                 << ":" << vgetq_lane_f32(f4vec, 1)
                 << ":" << vgetq_lane_f32(f4vec, 2)
                 << ":" << vgetq_lane_f32(f4vec, 3) << '\n';
