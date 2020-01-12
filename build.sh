@@ -37,11 +37,10 @@ make
 if [ -f "${PROJECT_PTH}/build/$EXECTBL" ]
 then
 echo -e "${GRN}Build success. Copying ${EXECTBL} to the Raspberry : ${TGT_EXE_PTH}.${NORM}"
-sshpass -p "${RMT_HOST_PASS}" ssh ${RMT_HOST} 'killall -9 gdbserver'
-
-echo -e "${GRN}Starting GDB server with port ${GDB_PORT}${NORM}"
 sshpass -p "${RMT_HOST_PASS}" \
 scp ${EXECTBL} ${RMT_HOST}:${TGT_EXE_PTH}/${EXECTBL}
+
+echo -e "${GRN}Starting GDB server with port ${GDB_PORT}${NORM}"
 sshpass -p "${RMT_HOST_PASS}" ssh ${RMT_HOST} << EOF
 killall -9 gdbserver && killall -9 gdbserver
 gdbserver :${GDB_PORT} ${TGT_EXE_PTH}/${EXECTBL}
